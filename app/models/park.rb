@@ -1,4 +1,4 @@
-class Park
+class Park < MadisonApi
   include Mongoid::Document
   include Geocoder::Model::Mongoid
 
