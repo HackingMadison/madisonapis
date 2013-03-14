@@ -10,3 +10,7 @@
 ADMIN_NAME: First User
 ADMIN_EMAIL: user@example.com
 ADMIN_PASSWORD: changeme
+# To generate a new SECRET_TOKEN, in irb do:
+#   require 'securerandom'
+#   SecureRandom.hex(64)
+SECRET_TOKEN: 696eb51265872fe94c11f76b763db8adfb5fd5aa41925696bb61d53d138a043889f0049ec68b6a0b114977c88f21988ac95e6d58bcfa13db82404312bcdbbc0e
