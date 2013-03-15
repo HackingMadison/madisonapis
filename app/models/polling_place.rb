@@ -4,8 +4,7 @@ class PollingPlace < MadisonApi
   field :ward, type: Integer
   field :aldermanic_district, type: Integer
 
-  def self.url
-    'https://data.cityofmadison.com/api/views/rtyh-6ucr/rows.csv?accessType=DOWNLOAD'
-  end
+  self.url = 'https://data.cityofmadison.com/api/views/rtyh-6ucr/rows.csv?accessType=DOWNLOAD'
+  self.source_key = "Ward"
 
 end

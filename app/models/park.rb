@@ -7,11 +7,10 @@ class Park < MadisonApi
   field :coordinates, type: Array
   field :address
 
-  reverse_geocoded_by :coordinates
+  self.source_key = "Id"
+  self.url = 'https://data.cityofmadison.com/api/views/svr6-6gvb/rows.csv?accessType=DOWNLOAD'
 
-  def self.url
-    'https://data.cityofmadison.com/api/views/svr6-6gvb/rows.csv?accessType=DOWNLOAD'
-  end
+  reverse_geocoded_by :coordinates
 
   def self.skip_fields
     ["Id"]
