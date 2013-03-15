@@ -5,6 +5,7 @@ class MadisonApi
 
   class_attribute :url
   class_attribute :source_key
+  class_attribute :key
 
   def self.source
     HTTParty.get(url)
@@ -22,10 +23,10 @@ class MadisonApi
   def self.import
     csv.each do |row|
       query = Hash.new
-      query[source_key.parameterize.underscore] = row[source_key]
+      query[key || source_key.parameterize.underscore] = row[source_key]
       record = self.where(query).first_or_initialize
       row.to_hash.keys.each do |key|
-        if !skip_fields.include?(key) || key == source_key
+        if !skip_fields.include?(key) || key != source_key
           if record.respond_to?(key.parameterize.underscore+"=")
             record.send(key.parameterize.underscore+"=",row.to_hash[key].try(:strip))
           else

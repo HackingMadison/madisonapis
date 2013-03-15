@@ -3,11 +3,12 @@ class Park < MadisonApi
   include Geocoder::Model::Mongoid
 
   field :acreage, type: Float
-  field :source_id, type: Integer
+  field :city_of_madison_id, type: Integer
   field :coordinates, type: Array
   field :address
 
   self.source_key = "Id"
+  self.key = :city_of_madison_id
   self.url = 'https://data.cityofmadison.com/api/views/svr6-6gvb/rows.csv?accessType=DOWNLOAD'
 
   reverse_geocoded_by :coordinates
