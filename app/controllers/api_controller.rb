@@ -25,7 +25,7 @@ class ApiController < ApplicationController
   end
 
   def klass
-    @klass ||= controller_name.capitalize.singularize.constantize
+    @klass ||= controller_name.classify.constantize
   end
 
 end
