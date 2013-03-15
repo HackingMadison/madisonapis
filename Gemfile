@@ -27,3 +27,5 @@ gem "mongoid"
 gem "geocoder"
 gem "kaminari"
 gem "active_model_serializers"
+gem 'newrelic_rpm'
+gem 'sentry-raven'
