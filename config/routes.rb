@@ -6,6 +6,7 @@ Madisonapis::Application.routes.draw do
     resources :police_reports, only: [:index]
     resources :public_safety_locations, only: [:index]
     resources :libraries, only: [:index]
+    resources :bcycle_stations, only: [:index]
   end
 
   root :to => "home#index"

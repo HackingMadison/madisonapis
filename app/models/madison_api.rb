@@ -17,11 +17,16 @@ class MadisonApi
   end
 
   def self.csv
-    CSV.parse(source, :headers => true)
+    @csv ||= CSV.parse(source, :headers => true)
   end
 
   def self.import
-    csv.each do |row|
+    rows = csv
+    if Rails.env.development?
+      rows = rows.take(500)
+      puts("Only importing 500 records in dev environment")
+    end
+    rows.each do |row|
       query = Hash.new
       query[key || source_key.parameterize.underscore] = row[source_key]
       record = self.where(query).first_or_initialize
@@ -36,6 +41,7 @@ class MadisonApi
       end
       record.save!
     end
+    return count
   end
 
   def self.skip_fields
